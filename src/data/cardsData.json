@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "imageUrl": "/bg/971.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    },
+    {
+      "id": 2,
+      "imageUrl": "/bg/971.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    },
+    {
+      "id": 3,
+      "imageUrl": "/bg/971.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    },
+    {
+      "id": 4,
+      "imageUrl": "/bg/971.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    },
+    {
+      "id": 5,
+      "imageUrl": "/bg/971.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    },
+    {
+      "id": 6,
+      "imageUrl": "/bg/971.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    }
+  ]
+  

@@ -10,9 +10,13 @@
   }
 }
 
+html {
+  scroll-behavior: auto; /* Ensure natural scroll behavior */
+}
+
 html,
 body {
-  max-width: 100vw;
+  width: 100vw;
   overflow-x: hidden;
 }
 
@@ -39,4 +43,14 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.borderRed {
+  /* border: 1px solid red; */
+}
+.borderBlue {
+  /* border: 1px solid blue;  */
+}
+.borderGreen {
+  /* border: 2px solid green; */
 }

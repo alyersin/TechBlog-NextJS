@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "imageUrl": "/bg/568.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    },
+    {
+      "id": 2,
+      "imageUrl": "/bg/568.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    },
+    {
+      "id": 3,
+      "imageUrl": "/bg/568.avif",
+      "title": "Lorem ipsum dolor sit amet, consectetur",
+      "description": "Read more"
+    }
+  ]
+  
