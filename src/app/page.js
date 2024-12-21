@@ -63,7 +63,7 @@ export default function Home() {
           {cardsData
             .slice(0, isMobile && !showAllCards ? 3 : cardsData.length)
             .map((card) => (
-              <Link key={card.id} href={`/page${card.id}`} passHref>
+              <Link key={card.id} href="/pages/ReadMore" passHref>
                 <Box>
                   <Card
                     imageUrl={card.imageUrl}
@@ -104,12 +104,14 @@ export default function Home() {
         width="100%"
         maxWidth="1280px"
         mx="auto"
+        boxShadow="none"
       >
         {Array(8)
           .fill(null)
           .map((_, index) => (
             <Box key={index} {...cardContainerStyles}>
               <Card
+                boxShadow="none"
                 borderLeft={{
                   base: "none",
                   md: "1px solid orange",
@@ -120,7 +122,7 @@ export default function Home() {
                 }}
                 borderTop={{ base: "1px solid orange", md: "none" }}
                 borderRadius="none"
-                width={{ base: "100%", md: "140px" }}
+                width={{ base: "90%", md: "140px" }}
                 height={{ base: "80px", md: "136px" }}
               />
             </Box>
@@ -161,7 +163,7 @@ export default function Home() {
           py={{ base: 10, md: 20 }}
         >
           {cardsDataTwo.map((card) => (
-            <Link key={card.id} href={`/page${card.id}`} passHref>
+            <Link key={card.id} href={`/pages/ReadMore`} passHref>
               <Box>
                 <Card
                   imageUrl={card.imageUrl}

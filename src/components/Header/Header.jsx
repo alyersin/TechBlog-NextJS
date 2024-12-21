@@ -51,7 +51,11 @@ export default function Header() {
           className="borderGreen"
           width={{ base: "170px", md: "360px" }}
           height="auto"
-          margin={{ base: "14px 30px", md: "20px 0 20px 40px" }}
+          margin={{
+            base: "14px 30px",
+            md: "20px 0 20px 40px",
+            // lg: "40px 20px",
+          }}
         >
           <Link href="/">
             <Image

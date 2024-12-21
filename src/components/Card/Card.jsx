@@ -25,7 +25,7 @@ export default function Card({
       width={width}
       height={height}
       mx={mx}
-      boxShadow={shadow}
+      // boxShadow={shadow}
       border={border}
       borderLeft={borderLeft}
       borderRight={borderRight}
