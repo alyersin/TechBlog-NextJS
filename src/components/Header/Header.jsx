@@ -142,9 +142,20 @@ export default function Header() {
           margin={"20px 40px 20px 0"}
           gap={4}
           alignItems="center"
+          flexWrap="nowrap"
+          overflow="hidden"
         >
           <Link href="../pages/TopPosts">
-            <Text _hover={{ color: "#FF7A3D" }} _active={{ color: "#FF7A3D" }}>
+            <Text
+              _hover={{ color: "#FF7A3D" }}
+              _active={{ color: "#FF7A3D" }}
+              fontSize={{
+                base: "sm",
+                md: "md",
+                lg: "lg",
+              }}
+              whiteSpace="nowrap"
+            >
               Top Posts
             </Text>
           </Link>
@@ -156,6 +167,12 @@ export default function Header() {
               bg="transparent"
               px={0}
               fontWeight="normal"
+              fontSize={{
+                base: "sm",
+                md: "md",
+                lg: "lg",
+              }}
+              whiteSpace="nowrap"
               _hover={{ background: "none", color: "#FF7A3D" }}
               _active={{ background: "none" }}
             >
@@ -174,13 +191,43 @@ export default function Header() {
             </MenuList>
           </Menu>
           <Link href="../pages/Services">
-            <Text _hover={{ color: "#FF7A3D" }}>Services</Text>
+            <Text
+              _hover={{ color: "#FF7A3D" }}
+              fontSize={{
+                base: "sm",
+                md: "md",
+                lg: "lg",
+              }}
+              whiteSpace="nowrap"
+            >
+              Services
+            </Text>
           </Link>
           <Link href="../pages/AboutUs">
-            <Text _hover={{ color: "#FF7A3D" }}>About Us</Text>
+            <Text
+              _hover={{ color: "#FF7A3D" }}
+              fontSize={{
+                base: "sm",
+                md: "md",
+                lg: "lg",
+              }}
+              whiteSpace="nowrap"
+            >
+              About Us
+            </Text>
           </Link>
           <Link href="../pages/ContactUs">
-            <Text _hover={{ color: "#FF7A3D" }}>Contact Us</Text>
+            <Text
+              _hover={{ color: "#FF7A3D" }}
+              fontSize={{
+                base: "sm",
+                md: "md",
+                lg: "lg",
+              }}
+              whiteSpace="nowrap"
+            >
+              Contact Us
+            </Text>
           </Link>
 
           <Box
@@ -190,6 +237,7 @@ export default function Header() {
             bgColor="#FF7A3D"
             color="white"
             fontWeight="700"
+            flexShrink={0}
             _hover={{
               background: "#FF7A3D",
               transform: "scale(1.1)",
