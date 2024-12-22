@@ -38,13 +38,13 @@ export default function TopBar() {
           mr={8}
         >
           <Link href="/">
-            <Icon as={FaLinkedin} boxSize={6} />
+            <Icon as={FaLinkedin} boxSize={6} _hover={{ color: "blue.500" }} />
           </Link>{" "}
           <Link href="/">
-            <Icon as={FaTwitter} boxSize={6} />
+            <Icon as={FaTwitter} boxSize={6} _hover={{ color: "blue.500" }} />
           </Link>{" "}
           <Link href="/">
-            <Icon as={FaGithub} boxSize={6} />
+            <Icon as={FaGithub} boxSize={6} _hover={{ color: "white" }} />
           </Link>
           <Box>
             <Icon as={FaSearch} boxSize={6} />

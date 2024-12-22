@@ -8,7 +8,17 @@ import {
   FormControl,
   Input,
 } from "@chakra-ui/react";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  InfoIcon,
+  AtSignIcon,
+  StarIcon,
+  LockIcon,
+  SettingsIcon,
+  RepeatIcon,
+  QuestionOutlineIcon,
+} from "@chakra-ui/icons";
 import { motion } from "framer-motion";
 import "../app/globals.css";
 import Card from "@/components/Card/Card";
@@ -16,6 +26,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import cardsData from "../data/cardsData";
 import cardsDataTwo from "../data/cardsDataTwo";
+import stickyData from "../data/stickyData";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
@@ -93,7 +104,6 @@ export default function Home() {
           </MotionButton>
         )}
       </Box>
-
       {/* STICKY CARDS */}
       <Box
         display="flex"
@@ -106,10 +116,19 @@ export default function Home() {
         mx="auto"
         boxShadow="none"
       >
-        {Array(8)
-          .fill(null)
-          .map((_, index) => (
-            <Box key={index} {...cardContainerStyles}>
+        {stickyData.map((data) => {
+          const IconComponent = {
+            InfoIcon,
+            AtSignIcon,
+            StarIcon,
+            LockIcon,
+            SettingsIcon,
+            RepeatIcon,
+            QuestionOutlineIcon,
+          }[data.icon];
+
+          return (
+            <Box key={data.id} {...cardContainerStyles}>
               <Card
                 boxShadow="none"
                 borderLeft={{
@@ -118,17 +137,27 @@ export default function Home() {
                 }}
                 borderRight={{
                   base: "none",
-                  md: index === 7 ? "1px solid orange" : "none",
+                  md:
+                    data.id === stickyData.length ? "1px solid orange" : "none",
                 }}
                 borderTop={{ base: "1px solid orange", md: "none" }}
                 borderRadius="none"
                 width={{ base: "90%", md: "140px" }}
                 height={{ base: "80px", md: "136px" }}
-              />
+                description={data.description}
+                title=""
+              >
+                {/* ADD ICON */}
+                <Box display="flex" justifyContent="center" alignItems="center">
+                  {IconComponent && (
+                    <IconComponent boxSize={6} color="orange.500" />
+                  )}
+                </Box>
+              </Card>
             </Box>
-          ))}
+          );
+        })}
       </Box>
-
       {/* POPULAR POSTS */}
       <Box
         className="borderRed"
@@ -141,7 +170,6 @@ export default function Home() {
         <Heading>Popular Posts</Heading>
         <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
       </Box>
-
       {/* 3-CARD SECTION */}
       <Box
         className="borderRed"
@@ -175,7 +203,6 @@ export default function Home() {
           ))}
         </Box>
       </Box>
-
       {/* BEST AWARDS */}
       <Box
         className="borderRed"
@@ -254,7 +281,6 @@ export default function Home() {
           </Box>
         </Box>
       </Box>
-
       {/* SUBSCRIBE SECTION */}
       <Box
         className="borderRed"

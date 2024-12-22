@@ -23,9 +23,21 @@ import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import "../../app/globals.css";
 import Link from "next/link";
+import LoginRegisterModal from "../LoginRegisterModal/LoginRegisterModal";
 
 export default function Header() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
+
+  const {
+    isOpen: isModalOpen,
+    onOpen: onModalOpen,
+    onClose: onModalClose,
+  } = useDisclosure();
+
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
 
   return (
@@ -54,7 +66,6 @@ export default function Header() {
           margin={{
             base: "14px 30px",
             md: "20px 0 20px 40px",
-            // lg: "40px 20px",
           }}
         >
           <Link href="/">
@@ -67,17 +78,16 @@ export default function Header() {
             />
           </Link>
         </Box>
-
         <IconButton
           aria-label="Open Menu"
           icon={<HamburgerIcon />}
           color="black"
-          onClick={onOpen}
+          onClick={onDrawerOpen}
           display={{ base: "flex", md: "none" }}
           margin={"14px 30px 14px 0"}
         />
         {/* DRAWER */}
-        <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
+        <Drawer isOpen={isDrawerOpen} placement="top" onClose={onDrawerClose}>
           <DrawerOverlay
             style={{
               top: "80px",
@@ -86,7 +96,7 @@ export default function Header() {
           <DrawerContent mt="70px" position="relative">
             <DrawerHeader>Menu</DrawerHeader>
             <DrawerBody py={0}>
-              <Button variant="ghost" width="100%" onClick={onClose}>
+              <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                 Top Posts
               </Button>
               <Button
@@ -99,41 +109,55 @@ export default function Header() {
               </Button>
               <Collapse in={isCategoriesOpen}>
                 <Box pl={4} mt={2}>
-                  <Button variant="ghost" width="100%" onClick={onClose}>
+                  <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                     News
                   </Button>
-                  <Button variant="ghost" width="100%" onClick={onClose}>
+                  <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                     Apps
                   </Button>
-                  <Button variant="ghost" width="100%" onClick={onClose}>
+                  <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                     Gaming
                   </Button>
-                  <Button variant="ghost" width="100%" onClick={onClose}>
+                  <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                     Security
                   </Button>
-                  <Button variant="ghost" width="100%" onClick={onClose}>
+                  <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                     Tech
                   </Button>
-                  <Button variant="ghost" width="100%" onClick={onClose}>
+                  <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                     Hacks
                   </Button>
-                  <Button variant="ghost" width="100%" onClick={onClose}>
+                  <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                     Gear
                   </Button>
-                  <Button variant="ghost" width="100%" onClick={onClose}>
+                  <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                     Tips
                   </Button>
                 </Box>
               </Collapse>
-              <Button variant="ghost" width="100%" onClick={onClose}>
+              <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                 Services
               </Button>
-
-              <Button variant="ghost" width="100%" onClick={onClose}>
+              <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                 About Us
               </Button>
-              <Button variant="ghost" width="100%" onClick={onClose}>
+              <Button variant="ghost" width="100%" onClick={onDrawerClose}>
                 Contact Us
+              </Button>
+
+              {/* Login Button */}
+              <Button
+                variant="solid"
+                width="100%"
+                bgColor="#FF7A3D"
+                color="white"
+                onClick={() => {
+                  onModalOpen();
+                  onDrawerClose();
+                }}
+                _hover={{ bg: "#FF5E1F" }}
+              >
+                Login / Register
               </Button>
             </DrawerBody>
           </DrawerContent>
@@ -235,22 +259,30 @@ export default function Header() {
           </Link>
 
           <Box
-            borderRadius="20px"
+            className="borderGreen"
+            textAlign="center"
+            mx="auto"
             margin="0 0 0 70px"
-            padding="8px 22px"
-            bgColor="#FF7A3D"
             color="white"
             fontWeight="700"
             flexShrink={0}
-            _hover={{
-              background: "#FF7A3D",
-              transform: "scale(1.1)",
-              transition: "all 0.2s ease-in-out",
-            }}
           >
-            <Link href="../pages/Login">
-              <Text>SIGN IN</Text>
-            </Link>
+            <Button
+              bgColor="#FF7A3D"
+              borderRadius="30px"
+              padding="12px 40px"
+              margin="auto"
+              onClick={onModalOpen}
+              _hover={{
+                background: "#FF7A3D",
+                transform: "scale(1.1)",
+                transition: "all 0.2s ease-in-out",
+              }}
+            >
+              SIGN IN
+            </Button>
+            {/* Modal */}
+            <LoginRegisterModal isOpen={isModalOpen} onClose={onModalClose} />
           </Box>
         </Box>
       </Box>

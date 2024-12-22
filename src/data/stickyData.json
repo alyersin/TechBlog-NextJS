@@ -1,0 +1,43 @@
+[
+    {
+        "id" : 1,
+        "description": "News",
+        "icon": "InfoIcon"
+    },
+    {
+        "id" : 2,
+        "description": "Apps",
+        "icon": "AtSignIcon"
+    },
+    {
+        "id" : 3,
+        "description": "Gaming",
+        "icon": "StarIcon"
+    },
+    {
+        "id" : 4,
+        "description": "Security",
+        "icon": "LockIcon"
+    },
+    {
+        "id" : 5,
+        "description": "Tech",
+        "icon": "SettingsIcon"
+    },
+    {
+        "id" : 6,
+        "description": "Hacks",
+        "icon": "RepeatIcon"
+    },
+    {
+        "id" : 7,
+        "description": "Gear",
+        "icon": "SettingsIcon"
+    },
+    {
+        "id" : 8,
+        "description": "Tips",
+        "icon": "QuestionOutlineIcon"
+    }
+]
+
