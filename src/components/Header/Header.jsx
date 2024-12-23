@@ -61,7 +61,7 @@ export default function Header() {
       >
         <Box
           className="borderGreen"
-          width={{ base: "170px", md: "360px" }}
+          width={{ base: "170px", md: "340px" }}
           height="auto"
           margin={{
             base: "14px 30px",
@@ -180,7 +180,7 @@ export default function Header() {
               fontSize={{
                 base: "sm",
                 md: "md",
-                lg: "lg",
+                lg: "0.9rem",
               }}
               whiteSpace="nowrap"
             >
@@ -198,7 +198,7 @@ export default function Header() {
               fontSize={{
                 base: "sm",
                 md: "md",
-                lg: "lg",
+                lg: "0.9rem",
               }}
               whiteSpace="nowrap"
               _hover={{ background: "none", color: "#FF7A3D" }}
@@ -224,7 +224,7 @@ export default function Header() {
               fontSize={{
                 base: "sm",
                 md: "md",
-                lg: "lg",
+                lg: "0.9rem",
               }}
               whiteSpace="nowrap"
             >
@@ -237,7 +237,7 @@ export default function Header() {
               fontSize={{
                 base: "sm",
                 md: "md",
-                lg: "lg",
+                lg: "0.9rem",
               }}
               whiteSpace="nowrap"
             >
@@ -250,7 +250,7 @@ export default function Header() {
               fontSize={{
                 base: "sm",
                 md: "md",
-                lg: "lg",
+                lg: "0.9rem",
               }}
               whiteSpace="nowrap"
             >
@@ -262,7 +262,7 @@ export default function Header() {
             className="borderGreen"
             textAlign="center"
             mx="auto"
-            margin="0 0 0 70px"
+            margin="10px 20px 10px 20px"
             color="white"
             fontWeight="700"
             flexShrink={0}
@@ -270,9 +270,18 @@ export default function Header() {
             <Button
               bgColor="#FF7A3D"
               borderRadius="30px"
-              padding="12px 40px"
+              padding={{
+                base: "10px 20px",
+                md: "12px 24px",
+                lg: "14px 28px",
+              }}
               margin="auto"
               onClick={onModalOpen}
+              fontSize={{
+                base: "sm",
+                md: "md",
+                lg: "0.9rem",
+              }}
               _hover={{
                 background: "#FF7A3D",
                 transform: "scale(1.1)",

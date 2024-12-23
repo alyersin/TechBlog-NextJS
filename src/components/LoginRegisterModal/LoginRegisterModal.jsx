@@ -18,30 +18,44 @@ import {
   InputGroup,
   InputRightElement,
   FormErrorMessage,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export default function LoginRegisterModal({ isOpen, onClose }) {
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const toast = useToast();
 
-  const handleSubmit = (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
-
-    console.log("Submitted");
-    if (password === confirmPassword) {
-      alert("Passwords match");
-    } else {
-      alert("Passwords do not match");
+    if (!email || !password) {
+      toast({
+        title: "Error",
+        description: "Both email and password are required.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
     }
+    console.log("Login Successful:", { email, password });
+    toast({
+      title: "Login successful!",
+      description: "Welcome back!",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+    onClose();
   };
 
-  const isMatch = password === confirmPassword || confirmPassword === "";
+  const handleRegisterSubmit = (e) => {
+    e.preventDefault();
+    console.log("Registration submitted!");
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -56,47 +70,18 @@ export default function LoginRegisterModal({ isOpen, onClose }) {
               <Tab>Register</Tab>
             </TabList>
             <TabPanels>
-              {/* Login Tab */}
+              {/* LOGIN */}
               <TabPanel>
-                <FormControl id="email" mb={4}>
-                  <FormLabel>Email Address</FormLabel>
-                  <Input type="email" placeholder="Enter your email" />
-                </FormControl>
-                <FormControl id="password" mb={4}>
-                  <FormLabel>Password</FormLabel>
-                  <InputGroup>
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Enter your password"
-                    />
-                    <InputRightElement>
-                      <Button
-                        size="sm"
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        {showPassword ? <ViewOffIcon /> : <ViewIcon />}
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
-                </FormControl>
-              </TabPanel>
-
-              {/* Register Tab */}
-              <TabPanel>
-                <form onSubmit={handleSubmit}>
-                  {/* Username */}
-                  <FormControl id="username" mb={4} isRequired>
-                    <FormLabel>Username</FormLabel>
-                    <Input type="text" placeholder="Enter your username" />
-                  </FormControl>
-
-                  {/* Email */}
+                <form onSubmit={handleLoginSubmit}>
                   <FormControl id="email" mb={4} isRequired>
                     <FormLabel>Email Address</FormLabel>
-                    <Input type="email" placeholder="Enter your email" />
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </FormControl>
-
-                  {/* Password */}
                   <FormControl id="password" mb={4} isRequired>
                     <FormLabel>Password</FormLabel>
                     <InputGroup>
@@ -116,46 +101,69 @@ export default function LoginRegisterModal({ isOpen, onClose }) {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
-
-                  {/* Confirm Password */}
-                  <FormControl
-                    id="confirm-password"
-                    mb={4}
-                    isInvalid={!isMatch && isSubmitted}
-                    isRequired
+                  <Button
+                    bgColor="#FF7A3D"
+                    type="submit"
+                    width="full"
+                    color="white"
+                    _hover={{ bg: "#e0652a" }}
                   >
-                    <FormLabel>Confirm Password</FormLabel>
+                    Login
+                  </Button>
+                </form>
+              </TabPanel>
+
+              {/* REGISTER */}
+              <TabPanel>
+                <form onSubmit={handleRegisterSubmit}>
+                  <FormControl id="username" mb={4} isRequired>
+                    <FormLabel>Username</FormLabel>
+                    <Input type="text" placeholder="Enter your username" />
+                  </FormControl>
+                  <FormControl id="email" mb={4} isRequired>
+                    <FormLabel>Email Address</FormLabel>
+                    <Input type="email" placeholder="Enter your email" />
+                  </FormControl>
+                  <FormControl id="password" mb={4} isRequired>
+                    <FormLabel>Password</FormLabel>
                     <InputGroup>
                       <Input
-                        type={showConfirmPassword ? "text" : "password"}
-                        placeholder="Re-enter your password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
                       />
                       <InputRightElement>
                         <Button
                           size="sm"
-                          onClick={() =>
-                            setShowConfirmPassword(!showConfirmPassword)
-                          }
+                          onClick={() => setShowPassword(!showPassword)}
                         >
-                          {showConfirmPassword ? <ViewOffIcon /> : <ViewIcon />}
+                          {showPassword ? <ViewOffIcon /> : <ViewIcon />}
                         </Button>
                       </InputRightElement>
                     </InputGroup>
-                    {!isMatch && confirmPassword && (
-                      <FormErrorMessage>
-                        Passwords do not match.
-                      </FormErrorMessage>
-                    )}
                   </FormControl>
-
-                  {/* Submit Button */}
+                  <FormControl id="confirm-password" mb={4} isRequired>
+                    <FormLabel>Confirm Password</FormLabel>
+                    <InputGroup>
+                      <Input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Re-enter your password"
+                      />
+                      <InputRightElement>
+                        <Button
+                          size="sm"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                        </Button>
+                      </InputRightElement>
+                    </InputGroup>
+                  </FormControl>
                   <Button
                     bgColor="#FF7A3D"
                     type="submit"
-                    isDisabled={!isMatch}
                     width="full"
+                    color="white"
+                    _hover={{ bg: "#e0652a" }}
                   >
                     Register
                   </Button>

@@ -8,6 +8,7 @@ export default function TopBar() {
       display={{ base: "none", md: "flex" }}
       justifyContent="center"
       bg="#ffdab9"
+      fontSize={14}
     >
       <Box
         className="borderGreen"
@@ -38,16 +39,16 @@ export default function TopBar() {
           mr={8}
         >
           <Link href="/">
-            <Icon as={FaLinkedin} boxSize={6} _hover={{ color: "blue.500" }} />
+            <Icon as={FaLinkedin} boxSize={4} _hover={{ color: "blue.500" }} />
           </Link>{" "}
           <Link href="/">
-            <Icon as={FaTwitter} boxSize={6} _hover={{ color: "blue.500" }} />
+            <Icon as={FaTwitter} boxSize={4} _hover={{ color: "blue.500" }} />
           </Link>{" "}
           <Link href="/">
-            <Icon as={FaGithub} boxSize={6} _hover={{ color: "white" }} />
+            <Icon as={FaGithub} boxSize={4} _hover={{ color: "white" }} />
           </Link>
           <Box>
-            <Icon as={FaSearch} boxSize={6} />
+            <Icon as={FaSearch} boxSize={4} />
           </Box>
         </Box>
       </Box>
